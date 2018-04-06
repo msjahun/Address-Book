@@ -14,7 +14,7 @@ main{
     margin-right: auto;
 }
 .card{
-    border: 3px solid #CECECE;
+    border: 3px solid #FF0000;
     padding: 20px;
     max-width: 600px;
     width: 80%;
@@ -45,7 +45,7 @@ main{
 }
 header, footer{
     padding: 10px;
-    background-color: #CECECE;
+    background-color: #FF0000;
     color: #FFFFFF;
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
@@ -66,7 +66,7 @@ footer{
     cursor: pointer;
 }
 #addBtn:hover{
-    background-color: #CECECE;
+    background-color: #FF0000;
 }
 .buttons-div button{
     width: 50%;
