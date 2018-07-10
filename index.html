@@ -19,6 +19,11 @@
                     <span class="close" id="close-editmodal">&times;</span>
                     <h3 class="center">Edit Contact</h3>
                     Name: <input type="text" id="editName">
+                    Gender: <select id="editGender">
+                            <option value=""></option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                      </select>
                     Phone: <input type="phone" id="editPhone">
                     Email: <input type="email" id="editEmail">
                     Address: <textarea maxlength="150"  id="editAddress" cols="30" rows="5"></textarea>
@@ -35,9 +40,10 @@
                 <span class="close" id="close-modal">&times;</span>
                 <h3 class="center">Add Contact</h3>
                 Name: <input type="text" id="contactName">
-                Gender: <select>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
+                Gender: <select id="contactGender">
+                        <option value=""></option>
+                    <option value="0">Male</option>
+                    <option value="1">Female</option>
                   </select>
                 Phone: <input type="phone" id="contactPhone">
                 Email: <input type="email" id="contactEmail">
