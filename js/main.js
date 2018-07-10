@@ -3,7 +3,7 @@ var addButton = document.getElementById('addContact');
 var editButton = document.getElementById('editContact');
 var dontE = false;
 var Eid;
-
+LoadCookiesDatatoUI();
 editButton.addEventListener("click",function () {
     if((document.getElementById('editName').value).toString().length ==0){
         alert("Please type name of person before saving");
@@ -16,6 +16,7 @@ editButton.addEventListener("click",function () {
     contacts[Eid].gender = genderSelect.selectedIndex;
     contacts[Eid].email = document.getElementById("editEmail").value;
     contacts[Eid].address = document.getElementById("editAddress").value;
+    createCookie("contacts_cookie", JSON.stringify(contacts),900);
     UI();
     document.getElementById('editModal').style.display = "none";
 }
@@ -36,7 +37,7 @@ addButton.addEventListener("click",function () {
         address : document.getElementById('contactAddress').value
     };
     contacts.push(contact);
-    
+    createCookie("contacts_cookie", JSON.stringify(contacts),900);
     UI();
     clearInputs();
     document.getElementById('myModal').style.display = "none";
@@ -44,6 +45,17 @@ addButton.addEventListener("click",function () {
 }
 })
 function UI(){
+    
+   // alert(JSON.stringify(contacts));
+
+
+var contacts_json_str = getCookie('contacts_cookie');
+//alert("cookies returned"+contacts_json_str);
+if((contacts_json_str).toString().length>0){
+    contacts = JSON.parse(contacts_json_str);
+
+}
+
     document.getElementById("cards-container").innerHTML = "";
     for (let index = contacts.length - 1 ; index >= 0; index--) {
         const element = contacts[index];
@@ -54,6 +66,61 @@ function UI(){
 
 
 }
+
+function LoadCookiesDatatoUI(){
+    
+    // alert(JSON.stringify(contacts));
+ 
+ 
+ 
+ var contacts_json_str = getCookie('contacts_cookie');
+ //alert("cookies returned"+contacts_json_str);
+ if((contacts_json_str).toString().length>0){
+     contacts = JSON.parse(contacts_json_str);
+ 
+
+ 
+     document.getElementById("cards-container").innerHTML = "";
+     for (let index = contacts.length - 1 ; index >= 0; index--) {
+         const element = contacts[index];
+         updateUI(element,index);
+         
+     }
+ 
+ 
+    }
+ }
+
+
+var createCookie = function(name, value, days) {
+    
+    var expires;
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toGMTString();
+    }
+    else {
+        expires = "";
+    }
+    document.cookie = name + "=" + value + expires + "; path=/";
+}
+
+function getCookie(c_name) {
+    if (document.cookie.length > 0) {
+        c_start = document.cookie.indexOf(c_name + "=");
+        if (c_start != -1) {
+            c_start = c_start + c_name.length + 1;
+            c_end = document.cookie.indexOf(";", c_start);
+            if (c_end == -1) {
+                c_end = document.cookie.length;
+            }
+            return unescape(document.cookie.substring(c_start, c_end));
+        }
+    }
+    return "";
+}
+
 function clearInputs() {
     document.getElementById('contactName').value = '';
     document.getElementById("contactGender").selectedIndex  = "0";
@@ -198,6 +265,7 @@ function removeContact(id) {
         updateUI(element,index);
         
     }
+    createCookie("contacts_cookie", JSON.stringify(contacts),900);
     showMessage();
     } else{
         dontE = true;
