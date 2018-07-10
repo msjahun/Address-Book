@@ -5,9 +5,12 @@ var dontE = false;
 var Eid;
 
 editButton.addEventListener("click",function () {
+    var genderSelect = document.getElementById("editGender");
+
     console.log(Eid);
     contacts[Eid].name = document.getElementById("editName").value;
     contacts[Eid].phone = document.getElementById("editPhone").value;
+    contacts[Eid].gender = genderSelect.selectedIndex;
     contacts[Eid].email = document.getElementById("editEmail").value;
     contacts[Eid].address = document.getElementById("editAddress").value;
     UI();
@@ -17,8 +20,10 @@ editButton.addEventListener("click",function () {
 addButton.addEventListener("click",function () {
     console.log(document.getElementById('contactName').value);
 //   alert('jell');
+    var genderSelect = document.getElementById("contactGender");
     var contact = {
         name : document.getElementById('contactName').value,
+        gender : genderSelect.selectedIndex,
         phone : document.getElementById('contactPhone').value,
         email : document.getElementById('contactEmail').value,
         address : document.getElementById('contactAddress').value
@@ -39,6 +44,7 @@ function UI(){
 }
 function clearInputs() {
     document.getElementById('contactName').value = '';
+    document.getElementById("contactGender").selectedIndex  = "0";
     document.getElementById('contactPhone').value = '';
     document.getElementById('contactEmail').value = '';
     document.getElementById('contactAddress').value = '';
@@ -52,8 +58,10 @@ function edit(index) {
         console.log("edit"+index);
         dontE = false;
         Eid = index;
-        // console.log(contacts[index]);
+         console.log(contacts[index]);
+        console.log("editGender"+contacts[index].gender);
         document.getElementById("editName").value = contacts[index].name;
+        document.getElementById("editGender").selectedIndex = contacts[index].gender;
         document.getElementById("editPhone").value = contacts[index].phone;
         document.getElementById("editEmail").value = contacts[index].email;
         document.getElementById("editAddress").value = contacts[index].address;
@@ -62,7 +70,7 @@ function edit(index) {
     dontE = false;
 }
 function updateUI(person,index) {
-
+    var genderOptions = document.getElementById("contactGender").options;
     let removeBtn = document.createElement("span");
     let times = document.createTextNode("x");
     removeBtn.appendChild(times);
@@ -77,7 +85,10 @@ function updateUI(person,index) {
     // let imgAtr = document.createAttribute('src');
     // imgAtr.value = 'images/icon.png';
 
-    img.setAttribute("src",'images/icon.png');
+    if(person.gender==2)
+    img.setAttribute("src",'images/icon_female.png');
+    else
+    img.setAttribute("src",'images/icon_male.png');
     
 
     node.classList = 'card';
@@ -98,6 +109,19 @@ function updateUI(person,index) {
     nameD.appendChild(name);
     nameD.appendChild(nameT);
     details.appendChild(nameD);
+
+
+    
+    let genderD = document.createElement("div");
+    let gender = document.createElement("b");
+    let genderP = document.createTextNode("Gender: ");
+    let genderT = document.createTextNode(genderOptions[person.gender].text);
+    gender.appendChild(genderP);
+    genderD.appendChild(gender);
+    genderD.appendChild(genderT);
+    details.appendChild(genderD);
+
+
     
     let phoneD = document.createElement("div");
     let phone = document.createElement("b");
