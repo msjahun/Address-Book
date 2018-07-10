@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Address Book</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/modal.css">
+</head>
+<body>
+    <header>
+        <h3>Address Book</h3>
+    </header>
+    <main>
+            <div id="editModal" class="modal">
+                    <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close" id="close-editmodal">&times;</span>
+                    <h3 class="center">Edit Contact</h3>
+                    Name: <input type="text" id="editName">
+                    Phone: <input type="phone" id="editPhone">
+                    Email: <input type="email" id="editEmail">
+                    Address: <textarea maxlength="150"  id="editAddress" cols="30" rows="5"></textarea>
+                    <br> 
+                    <button id="editContact">Save</button>
+                    <button>Clear</button>
+                            
+                </div>
+                    
+            </div>
+        <div id="myModal" class="modal">
+                <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close" id="close-modal">&times;</span>
+                <h3 class="center">Add Contact</h3>
+                Name: <input type="text" id="contactName">
+                Gender: <select>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select><br/>
+                Phone: <input type="phone" id="contactPhone">
+                Email: <input type="email" id="contactEmail">
+                Address: <textarea maxlength="150"  id="contactAddress" cols="30" rows="5"></textarea>
+                <br>
+                <button id="addContact">Add</button>
+                <button>Clear</button>
+                        
+            </div>
+                
+        </div>
+        <div class="center"><button id="addBtn">&plus;</button> </div>
+        <div class="cards-container" id="cards-container">
+            
+        </div>
+        <div id="message" class="center">
+                <h4>No Contact Added, click the add button to add some new contact to your address book</h4>
+        </div>
+    </main>
+    <footer>
+        2018 &copy; ambat
+    </footer>
+</body>
+<script src="js/main.js"></script>
+<script src="js/modal.js"></script>
+</html>
