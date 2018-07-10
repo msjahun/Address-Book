@@ -49,6 +49,14 @@ function clearInputs() {
     document.getElementById('contactEmail').value = '';
     document.getElementById('contactAddress').value = '';
 }
+
+function clearInputsEditModal() {
+    document.getElementById('editName').value = '';
+    document.getElementById("editGender").selectedIndex  = "0";
+    document.getElementById('editPhone').value = '';
+    document.getElementById('editEmail').value = '';
+    document.getElementById('editAddress').value = '';
+}
 document.onload = () => {
     showMessage();
     clearInputs();
