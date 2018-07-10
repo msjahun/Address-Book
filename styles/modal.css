@@ -29,7 +29,7 @@
     max-width: 500px;
     margin-bottom: 150px;
 }
-.modal-content  input  select, .modal-content  textarea{
+.modal-content  input,.modal-content  select, .modal-content  textarea{
     width: 100%;
 }
 
