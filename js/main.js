@@ -5,6 +5,9 @@ var dontE = false;
 var Eid;
 
 editButton.addEventListener("click",function () {
+    if((document.getElementById('editName').value).toString().length ==0){
+        alert("Please type name of person before saving");
+}else{
     var genderSelect = document.getElementById("editGender");
 
     console.log(Eid);
@@ -15,11 +18,15 @@ editButton.addEventListener("click",function () {
     contacts[Eid].address = document.getElementById("editAddress").value;
     UI();
     document.getElementById('editModal').style.display = "none";
+}
 });
 
 addButton.addEventListener("click",function () {
-    console.log(document.getElementById('contactName').value);
-//   alert('jell');
+    if((document.getElementById('contactName').value).toString().length ==0){
+            alert("Please type name of person before saving contact");
+    }else{
+   // console.log(document.getElementById('contactName').value);
+// alert('jell');
     var genderSelect = document.getElementById("contactGender");
     var contact = {
         name : document.getElementById('contactName').value,
@@ -33,6 +40,8 @@ addButton.addEventListener("click",function () {
     UI();
     clearInputs();
     document.getElementById('myModal').style.display = "none";
+
+}
 })
 function UI(){
     document.getElementById("cards-container").innerHTML = "";
@@ -41,6 +50,9 @@ function UI(){
         updateUI(element,index);
         
     }
+
+
+
 }
 function clearInputs() {
     document.getElementById('contactName').value = '';
