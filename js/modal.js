@@ -4,6 +4,8 @@ var emodal = document.getElementById('editModal');
 
 // Get the button that opens the modal
 var btn = document.getElementById("addBtn");
+var clearBtnAddModal= document.getElementById("clearAddContact");
+var clearBtnEditModal = document.getElementById("clearEditContact");
 
 // Get the <span> element that closes the modal
 var span = document.getElementById("close-modal");
@@ -13,6 +15,14 @@ var editSpan = document.getElementById("close-editmodal");
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
     modal.style.display = "block";
+}
+
+clearBtnAddModal.onclick = function(){
+    clearInputs();
+}
+
+clearBtnEditModal.onclick = function(){
+    clearInputsEditModal();
 }
 
 // When the user clicks on <span> (x), close the modal
