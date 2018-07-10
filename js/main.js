@@ -160,17 +160,27 @@ function updateUI(person,index) {
     showMessage();
 }
 function removeContact(id) {
-    dontE = true;
+
+   
+    var confirmDelete = confirm("Are you sure you want to delete "+ contacts[id].name+" from your address book?");
+    if (confirmDelete == true) {
+        dontE = true;
     var contactsD = document.getElementById("cards-container");
     contactsD.removeChild(contactsD.childNodes[id]);
+    //console.log("About to delete "+contacts[id].name);
     contacts.splice(id,1);
+
+  
     document.getElementById("cards-container").innerHTML = "";
     for (let index = 0; index < contacts.length; index++) {
+      
         const element = contacts[index];
         updateUI(element,index);
         
     }
     showMessage();
+    } 
+    emodal.style.display = "none";
 }
 
 function showMessage() {
