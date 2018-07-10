@@ -179,8 +179,10 @@ function removeContact(id) {
         
     }
     showMessage();
-    } 
-    emodal.style.display = "none";
+    } else{
+        dontE = true;
+    }
+    
 }
 
 function showMessage() {
